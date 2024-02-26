@@ -17,14 +17,22 @@ void printStudent(Student *head);
 
 void makeStudent(Student *student)
 {
-    /*******************************
-     * Code your program here
-     *******************************/
+    ifstream ifs;
+    ifs.open("students.txt");
+    if(!ifs) {
+        cerr << "ERROR: FILE COOKED" << endl;
+    }
+
+    for(int i = 0; i < N; i++) {
+        ifs >> (student+i)->id >> (student+i)->name >> (student+i)->major;  // CAN be used with either *student OR student[]
+        // ifs >> student[i].id >> student[i].name >> student[i].major;     // CAN be used with either *student OR student[]
+                                                                            // ARRAY and POINTER can be used the same way
+    }
 }
 void printStudent(Student *student)
 {
+    for(int i = 0; i < N; i++) {
+        cout << (student+i)->id << " " << (student+i)->name << " " << (student+i)->major << endl;
+    }
     cout << endl;
-    /*******************************
-     * Code your program here
-     *******************************/
 }
